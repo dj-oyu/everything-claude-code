@@ -1,0 +1,34 @@
+{
+  "PreToolUse": [
+    {
+      "hook_name": "embedded_code_review_reminder",
+      "command_regex": "^((?!git commit|git push).)*$",
+      "description": "C言語の変更をコミットする前に、`review-c-code`コマンドでコード品質とメモリ管理を確認することを推奨します。",
+      "action": "suggest_command",
+      "suggested_command": "/review-c-code"
+    },
+    {
+      "hook_name": "memory_pre_build_check",
+      "command_regex": "idf.py build",
+      "description": "ビルド前にメモリ使用量を確認しますか？ `/optimize-memory analyze`",
+      "action": "suggest_command",
+      "suggested_command": "/optimize-memory analyze"
+    }
+  ],
+  "PostToolUse": [
+    {
+      "hook_name": "flash_success_check",
+      "command_regex": "idf.py flash",
+      "description": "ファームウェアの書き込みが成功しました。デバイスの動作を確認してください。",
+      "action": "notify"
+    }
+  ],
+  "Stop": [
+    {
+      "hook_name": "power_off_reminder",
+      "command_regex": ".*",
+      "description": "作業終了前に、デバイスの電源管理に関するベストプラクティス（`bsp_generate_poweroff_signal()`など）を検討してください。",
+      "action": "notify"
+    }
+  ]
+}
