@@ -1,17 +1,17 @@
-# Coding Style
+# コーディングスタイル
 
-## Immutability (CRITICAL)
+## 不変性（クリティカル）
 
-ALWAYS create new objects, NEVER mutate:
+常に新しいオブジェクトを作成し、決してミューテート（変更）しないこと：
 
 ```javascript
-// WRONG: Mutation
+// 誤り: ミューテーション
 function updateUser(user, name) {
-  user.name = name  // MUTATION!
+  user.name = name  // ミューテーション!
   return user
 }
 
-// CORRECT: Immutability
+// 正しい: 不変性
 function updateUser(user, name) {
   return {
     ...user,
@@ -20,17 +20,17 @@ function updateUser(user, name) {
 }
 ```
 
-## File Organization
+## ファイル構成
 
-MANY SMALL FILES > FEW LARGE FILES:
-- High cohesion, low coupling
-- 200-400 lines typical, 800 max
-- Extract utilities from large components
-- Organize by feature/domain, not by type
+少数の大きなファイルより多数の小さなファイル：
+- 高い凝集度、低い結合度
+- 通常200〜400行、最大800行
+- 大きなコンポーネントからユーティリティを抽出する
+- 型ではなく、機能/ドメインで整理する
 
-## Error Handling
+## エラー処理
 
-ALWAYS handle errors comprehensively:
+常にエラーを包括的に処理すること：
 
 ```typescript
 try {
@@ -42,9 +42,9 @@ try {
 }
 ```
 
-## Input Validation
+## 入力検証
 
-ALWAYS validate user input:
+常にユーザー入力を検証すること：
 
 ```typescript
 import { z } from 'zod'
@@ -57,14 +57,14 @@ const schema = z.object({
 const validated = schema.parse(input)
 ```
 
-## Code Quality Checklist
+## コード品質チェックリスト
 
-Before marking work complete:
-- [ ] Code is readable and well-named
-- [ ] Functions are small (<50 lines)
-- [ ] Files are focused (<800 lines)
-- [ ] No deep nesting (>4 levels)
-- [ ] Proper error handling
-- [ ] No console.log statements
-- [ ] No hardcoded values
-- [ ] No mutation (immutable patterns used)
+作業完了とマークする前に：
+- [ ] コードは読みやすく、適切に命名されている
+- [ ] 関数は小さい（<50行）
+- [ ] ファイルは焦点が絞られている（<800行）
+- [ ] 深いネストがない（>4レベル）
+- [ ] 適切なエラー処理
+- [ ] `console.log`文がない
+- [ ] ハードコードされた値がない
+- [ ] ミューテーションがない（不変パターンが使用されている）

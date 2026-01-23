@@ -1,47 +1,47 @@
-# Performance Optimization
+# パフォーマンス最適化
 
-## Model Selection Strategy
+## モデル選択戦略
 
-**Haiku 4.5** (90% of Sonnet capability, 3x cost savings):
-- Lightweight agents with frequent invocation
-- Pair programming and code generation
-- Worker agents in multi-agent systems
+**Haiku 4.5** (Sonnetの能力の90%、3倍のコスト削減):
+- 頻繁に呼び出される軽量エージェント
+- ペアプログラミングとコード生成
+- マルチエージェントシステムにおけるワーカーエージェント
 
-**Sonnet 4.5** (Best coding model):
-- Main development work
-- Orchestrating multi-agent workflows
-- Complex coding tasks
+**Sonnet 4.5** (最高のコーディングモデル):
+- 主な開発作業
+- マルチエージェントワークフローのオーケストレーション
+- 複雑なコーディングタスク
 
-**Opus 4.5** (Deepest reasoning):
-- Complex architectural decisions
-- Maximum reasoning requirements
-- Research and analysis tasks
+**Opus 4.5** (最も深い推論):
+- 複雑なアーキテクチャ上の決定
+- 最大限の推論要件
+- 調査および分析タスク
 
-## Context Window Management
+## コンテキストウィンドウ管理
 
-Avoid last 20% of context window for:
-- Large-scale refactoring
-- Feature implementation spanning multiple files
-- Debugging complex interactions
+コンテキストウィンドウの最後の20%は以下のタスクでは避けること:
+- 大規模なリファクタリング
+- 複数のファイルにまたがる機能実装
+- 複雑なインタラクションのデバッグ
 
-Lower context sensitivity tasks:
-- Single-file edits
-- Independent utility creation
-- Documentation updates
-- Simple bug fixes
+コンテキスト感度が低いタスク:
+- 単一ファイルの編集
+- 独立したユーティリティの作成
+- ドキュメントの更新
+- 簡単なバグ修正
 
-## Ultrathink + Plan Mode
+## Ultrathink + プランモード
 
-For complex tasks requiring deep reasoning:
-1. Use `ultrathink` for enhanced thinking
-2. Enable **Plan Mode** for structured approach
-3. "Rev the engine" with multiple critique rounds
-4. Use split role sub-agents for diverse analysis
+深い推論を必要とする複雑なタスクの場合:
+1. 思考を強化するために `ultrathink` を使用する
+2. 構造化されたアプローチのために **プランモード** を有効にする
+3. 複数の批評ラウンドで「エンジンを吹かす」
+4. 多様な分析のために役割を分割したサブエージェントを使用する
 
-## Build Troubleshooting
+## ビルドのトラブルシューティング
 
-If build fails:
-1. Use **build-error-resolver** agent
-2. Analyze error messages
-3. Fix incrementally
-4. Verify after each fix
+ビルドが失敗した場合:
+1. **build-error-resolver** エージェントを使用する
+2. エラーメッセージを分析する
+3. インクリメンタルに修正する
+4. 各修正後に検証する

@@ -1,49 +1,49 @@
-# Agent Orchestration
+# エージェントオーケストレーション
 
-## Available Agents
+## 利用可能なエージェント
 
-Located in `~/.claude/agents/`:
+`~/.claude/agents/`に配置:
 
-| Agent | Purpose | When to Use |
-|-------|---------|-------------|
-| planner | Implementation planning | Complex features, refactoring |
-| architect | System design | Architectural decisions |
-| tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code review | After writing code |
-| security-reviewer | Security analysis | Before commits |
-| build-error-resolver | Fix build errors | When build fails |
-| e2e-runner | E2E testing | Critical user flows |
-| refactor-cleaner | Dead code cleanup | Code maintenance |
-| doc-updater | Documentation | Updating docs |
+| エージェント | 目的 | 使用場面 |
+|---|---|---|
+| planner | 実装計画 | 複雑な機能、リファクタリング |
+| architect | システム設計 | アーキテクチャ上の決定 |
+| tdd-guide | テスト駆動開発 | 新機能、バグ修正 |
+| code-reviewer | コードレビュー | コード記述後 |
+| security-reviewer | セキュリティ分析 | コミット前 |
+| build-error-resolver | ビルドエラー修正 | ビルド失敗時 |
+| e2e-runner | E2Eテスト | クリティカルなユーザーフロー |
+| refactor-cleaner | デッドコードクリーンアップ | コードメンテナンス |
+| doc-updater | ドキュメント | ドキュメント更新 |
 
-## Immediate Agent Usage
+## 即時エージェント利用
 
-No user prompt needed:
-1. Complex feature requests - Use **planner** agent
-2. Code just written/modified - Use **code-reviewer** agent
-3. Bug fix or new feature - Use **tdd-guide** agent
-4. Architectural decision - Use **architect** agent
+ユーザープロンプト不要:
+1. 複雑な機能リクエスト - **planner** エージェントを使用
+2. コードが書かれた/修正された直後 - **code-reviewer** エージェントを使用
+3. バグ修正または新機能 - **tdd-guide** エージェントを使用
+4. アーキテクチャ上の決定 - **architect** エージェントを使用
 
-## Parallel Task Execution
+## 並列タスク実行
 
-ALWAYS use parallel Task execution for independent operations:
+独立した操作には常に並列タスク実行を使用すること:
 
 ```markdown
-# GOOD: Parallel execution
-Launch 3 agents in parallel:
-1. Agent 1: Security analysis of auth.ts
-2. Agent 2: Performance review of cache system
-3. Agent 3: Type checking of utils.ts
+# 良い: 並列実行
+3つのエージェントを並列で起動:
+1. エージェント1: auth.tsのセキュリティ分析
+2. エージェント2: キャッシュシステムのパフォーマンスレビュー
+3. エージェント3: utils.tsの型チェック
 
-# BAD: Sequential when unnecessary
-First agent 1, then agent 2, then agent 3
+# 悪い: 不要な場合の順次実行
+最初にエージェント1、次にエージェント2、次にエージェント3
 ```
 
-## Multi-Perspective Analysis
+## 多角的分析
 
-For complex problems, use split role sub-agents:
-- Factual reviewer
-- Senior engineer
-- Security expert
-- Consistency reviewer
-- Redundancy checker
+複雑な問題には、役割を分割したサブエージェントを使用する:
+- 事実確認レビュアー
+- シニアエンジニア
+- セキュリティ専門家
+- 一貫性レビュアー
+- 冗長性チェッカー

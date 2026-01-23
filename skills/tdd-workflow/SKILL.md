@@ -1,123 +1,123 @@
 ---
 name: tdd-workflow
-description: Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.
+description: 新機能の作成、バグ修正、コードのリファクタリング時にこのスキルを使用します。単体、統合、E2Eテストを含む80%以上のカバレッジでテスト駆動開発を強制します。
 ---
 
-# Test-Driven Development Workflow
+# テスト駆動開発ワークフロー
 
-This skill ensures all code development follows TDD principles with comprehensive test coverage.
+このスキルは、すべてのコード開発が包括的なテストカバレッジを持つTDD原則に従うことを保証します。
 
-## When to Activate
+## アクティベートするタイミング
 
-- Writing new features or functionality
-- Fixing bugs or issues
-- Refactoring existing code
-- Adding API endpoints
-- Creating new components
+- 新機能や機能性の作成
+- バグや問題の修正
+- 既存コードのリファクタリング
+- APIエンドポイントの追加
+- 新しいコンポーネントの作成
 
-## Core Principles
+## コア原則
 
-### 1. Tests BEFORE Code
-ALWAYS write tests first, then implement code to make tests pass.
+### 1. テストをコードの前に
+常に最初にテストを書き、次にテストをパスさせるためのコードを実装します。
 
-### 2. Coverage Requirements
-- Minimum 80% coverage (unit + integration + E2E)
-- All edge cases covered
-- Error scenarios tested
-- Boundary conditions verified
+### 2. カバレッジ要件
+- 最低80%のカバレッジ（単体 + 統合 + E2E）
+- すべてのエッジケースをカバー
+- エラーシナリオをテスト
+- 境界条件を検証
 
-### 3. Test Types
+### 3. テストの種類
 
-#### Unit Tests
-- Individual functions and utilities
-- Component logic
-- Pure functions
-- Helpers and utilities
+#### 単体テスト
+- 個々の関数とユーティリティ
+- コンポーネントロジック
+- 純粋関数
+- ヘルパーとユーティリティ
 
-#### Integration Tests
-- API endpoints
-- Database operations
-- Service interactions
-- External API calls
+#### 統合テスト
+- APIエンドポイント
+- データベース操作
+- サービスインタラクション
+- 外部API呼び出し
 
-#### E2E Tests (Playwright)
-- Critical user flows
-- Complete workflows
-- Browser automation
-- UI interactions
+#### E2Eテスト (Playwright)
+- 重要なユーザーフロー
+- 完全なワークフロー
+- ブラウザ自動化
+- UIインタラクション
 
-## TDD Workflow Steps
+## TDDワークフローの手順
 
-### Step 1: Write User Journeys
+### ステップ1: ユーザージャーニーを作成する
 ```
-As a [role], I want to [action], so that [benefit]
+[役割]として、[利益]のために[アクション]をしたい
 
-Example:
-As a user, I want to search for markets semantically,
-so that I can find relevant markets even without exact keywords.
+例:
+ユーザーとして、意味的に市場を検索したい、
+そうすれば、正確なキーワードがなくても関連する市場を見つけることができる。
 ```
 
-### Step 2: Generate Test Cases
-For each user journey, create comprehensive test cases:
+### ステップ2: テストケースを生成する
+各ユーザージャーニーについて、包括的なテストケースを作成します:
 
 ```typescript
 describe('Semantic Search', () => {
   it('returns relevant markets for query', async () => {
-    // Test implementation
+    // テスト実装
   })
 
   it('handles empty query gracefully', async () => {
-    // Test edge case
+    // エッジケースのテスト
   })
 
   it('falls back to substring search when Redis unavailable', async () => {
-    // Test fallback behavior
+    // フォールバック挙動のテスト
   })
 
   it('sorts results by similarity score', async () => {
-    // Test sorting logic
+    // ソートロジックのテスト
   })
 })
 ```
 
-### Step 3: Run Tests (They Should Fail)
+### ステップ3: テストを実行する（失敗するはず）
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+# テストは失敗するはずです - まだ実装していません
 ```
 
-### Step 4: Implement Code
-Write minimal code to make tests pass:
+### ステップ4: コードを実装する
+テストをパスさせるための最小限のコードを書きます:
 
 ```typescript
-// Implementation guided by tests
+// テストに導かれた実装
 export async function searchMarkets(query: string) {
-  // Implementation here
+  // ここに実装
 }
 ```
 
-### Step 5: Run Tests Again
+### ステップ5: 再度テストを実行する
 ```bash
 npm test
-# Tests should now pass
+# テストは अब成功するはずです
 ```
 
-### Step 6: Refactor
-Improve code quality while keeping tests green:
-- Remove duplication
-- Improve naming
-- Optimize performance
-- Enhance readability
+### ステップ6: リファクタリング
+テストをグリーンのままコード品質を向上させます:
+- 重複を削除
+- 命名を改善
+- パフォーマンスを最適化
+- 可読性を向上
 
-### Step 7: Verify Coverage
+### ステップ7: カバレッジを検証する
 ```bash
 npm run test:coverage
-# Verify 80%+ coverage achieved
+# 80%以上のカバレッジが達成されたことを確認
 ```
 
-## Testing Patterns
+## テストパターン
 
-### Unit Test Pattern (Jest/Vitest)
+### 単体テストパターン (Jest/Vitest)
 ```typescript
 import { render, screen, fireEvent } from '@testing-library/react'
 import { Button } from './Button'
@@ -144,7 +144,7 @@ describe('Button Component', () => {
 })
 ```
 
-### API Integration Test Pattern
+### API統合テストパターン
 ```typescript
 import { NextRequest } from 'next/server'
 import { GET } from './route'
@@ -168,74 +168,74 @@ describe('GET /api/markets', () => {
   })
 
   it('handles database errors gracefully', async () => {
-    // Mock database failure
+    // データベースの失敗をモックする
     const request = new NextRequest('http://localhost/api/markets')
-    // Test error handling
+    // エラーハンドリングをテストする
   })
 })
 ```
 
-### E2E Test Pattern (Playwright)
+### E2Eテストパターン (Playwright)
 ```typescript
 import { test, expect } from '@playwright/test'
 
 test('user can search and filter markets', async ({ page }) => {
-  // Navigate to markets page
+  // マーケットページに移動
   await page.goto('/')
   await page.click('a[href="/markets"]')
 
-  // Verify page loaded
+  // ページが読み込まれたことを確認
   await expect(page.locator('h1')).toContainText('Markets')
 
-  // Search for markets
+  // マーケットを検索
   await page.fill('input[placeholder="Search markets"]', 'election')
 
-  // Wait for debounce and results
+  // デバウンスと結果を待つ
   await page.waitForTimeout(600)
 
-  // Verify search results displayed
+  // 検索結果が表示されたことを確認
   const results = page.locator('[data-testid="market-card"]')
   await expect(results).toHaveCount(5, { timeout: 5000 })
 
-  // Verify results contain search term
+  // 結果に検索語が含まれていることを確認
   const firstResult = results.first()
   await expect(firstResult).toContainText('election', { ignoreCase: true })
 
-  // Filter by status
+  // ステータスでフィルタリング
   await page.click('button:has-text("Active")')
 
-  // Verify filtered results
+  // フィルタリングされた結果を確認
   await expect(results).toHaveCount(3)
 })
 
 test('user can create a new market', async ({ page }) => {
-  // Login first
+  // 最初にログイン
   await page.goto('/creator-dashboard')
 
-  // Fill market creation form
+  // マーケット作成フォームを入力
   await page.fill('input[name="name"]', 'Test Market')
   await page.fill('textarea[name="description"]', 'Test description')
   await page.fill('input[name="endDate"]', '2025-12-31')
 
-  // Submit form
+  // フォームを送信
   await page.click('button[type="submit"]')
 
-  // Verify success message
+  // 成功メッセージを確認
   await expect(page.locator('text=Market created successfully')).toBeVisible()
 
-  // Verify redirect to market page
+  // マーケットページへのリダイレクトを確認
   await expect(page).toHaveURL(/\/markets\/test-market/)
 })
 ```
 
-## Test File Organization
+## テストファイルの構成
 
 ```
 src/
 ├── components/
 │   ├── Button/
 │   │   ├── Button.tsx
-│   │   ├── Button.test.tsx          # Unit tests
+│   │   ├── Button.test.tsx          # 単体テスト
 │   │   └── Button.stories.tsx       # Storybook
 │   └── MarketCard/
 │       ├── MarketCard.tsx
@@ -244,16 +244,16 @@ src/
 │   └── api/
 │       └── markets/
 │           ├── route.ts
-│           └── route.test.ts         # Integration tests
+│           └── route.test.ts         # 統合テスト
 └── e2e/
-    ├── markets.spec.ts               # E2E tests
+    ├── markets.spec.ts               # E2Eテスト
     ├── trading.spec.ts
     └── auth.spec.ts
 ```
 
-## Mocking External Services
+## 外部サービスのモック
 
-### Supabase Mock
+### Supabaseモック
 ```typescript
 jest.mock('@/lib/supabase', () => ({
   supabase: {
@@ -269,7 +269,7 @@ jest.mock('@/lib/supabase', () => ({
 }))
 ```
 
-### Redis Mock
+### Redisモック
 ```typescript
 jest.mock('@/lib/redis', () => ({
   searchMarketsByVector: jest.fn(() => Promise.resolve([
@@ -279,23 +279,23 @@ jest.mock('@/lib/redis', () => ({
 }))
 ```
 
-### OpenAI Mock
+### OpenAIモック
 ```typescript
 jest.mock('@/lib/openai', () => ({
   generateEmbedding: jest.fn(() => Promise.resolve(
-    new Array(1536).fill(0.1) // Mock 1536-dim embedding
+    new Array(1536).fill(0.1) // 1536次元の埋め込みをモック
   ))
 }))
 ```
 
-## Test Coverage Verification
+## テストカバレッジの検証
 
-### Run Coverage Report
+### カバレッジレポートの実行
 ```bash
 npm run test:coverage
 ```
 
-### Coverage Thresholds
+### カバレッジのしきい値
 ```json
 {
   "jest": {
@@ -311,69 +311,69 @@ npm run test:coverage
 }
 ```
 
-## Common Testing Mistakes to Avoid
+## 避けるべき一般的なテストの間違い
 
-### ❌ WRONG: Testing Implementation Details
+### ❌ 誤り: 実装の詳細をテストする
 ```typescript
-// Don't test internal state
+// 内部状態をテストしない
 expect(component.state.count).toBe(5)
 ```
 
-### ✅ CORRECT: Test User-Visible Behavior
+### ✅ 正しい: ユーザーに見える振る舞いをテストする
 ```typescript
-// Test what users see
+// ユーザーが見るものをテストする
 expect(screen.getByText('Count: 5')).toBeInTheDocument()
 ```
 
-### ❌ WRONG: Brittle Selectors
+### ❌ 誤り: 壊れやすいセレクタ
 ```typescript
-// Breaks easily
+// 簡単に壊れる
 await page.click('.css-class-xyz')
 ```
 
-### ✅ CORRECT: Semantic Selectors
+### ✅ 正しい: セマンティックなセレクタ
 ```typescript
-// Resilient to changes
+// 変更に強い
 await page.click('button:has-text("Submit")')
 await page.click('[data-testid="submit-button"]')
 ```
 
-### ❌ WRONG: No Test Isolation
+### ❌ 誤り: テストの分離がない
 ```typescript
-// Tests depend on each other
+// テストが互いに依存している
 test('creates user', () => { /* ... */ })
-test('updates same user', () => { /* depends on previous test */ })
+test('updates same user', () => { /* 前のテストに依存 */ })
 ```
 
-### ✅ CORRECT: Independent Tests
+### ✅ 正しい: 独立したテスト
 ```typescript
-// Each test sets up its own data
+// 各テストが自身のデータをセットアップする
 test('creates user', () => {
   const user = createTestUser()
-  // Test logic
+  // テストロジック
 })
 
 test('updates user', () => {
   const user = createTestUser()
-  // Update logic
+  // 更新ロジック
 })
 ```
 
-## Continuous Testing
+## 継続的テスト
 
-### Watch Mode During Development
+### 開発中のウォッチモード
 ```bash
 npm test -- --watch
-# Tests run automatically on file changes
+# ファイル変更時にテストが自動実行される
 ```
 
-### Pre-Commit Hook
+### プリコミットフック
 ```bash
-# Runs before every commit
+# すべてのコミットの前に実行される
 npm test && npm run lint
 ```
 
-### CI/CD Integration
+### CI/CD統合
 ```yaml
 # GitHub Actions
 - name: Run Tests
@@ -382,28 +382,28 @@ npm test && npm run lint
   uses: codecov/codecov-action@v3
 ```
 
-## Best Practices
+## ベストプラクティス
 
-1. **Write Tests First** - Always TDD
-2. **One Assert Per Test** - Focus on single behavior
-3. **Descriptive Test Names** - Explain what's tested
-4. **Arrange-Act-Assert** - Clear test structure
-5. **Mock External Dependencies** - Isolate unit tests
-6. **Test Edge Cases** - Null, undefined, empty, large
-7. **Test Error Paths** - Not just happy paths
-8. **Keep Tests Fast** - Unit tests < 50ms each
-9. **Clean Up After Tests** - No side effects
-10. **Review Coverage Reports** - Identify gaps
+1. **最初にテストを書く** - 常にTDD
+2. **テストごとに1つのアサート** - 単一の振る舞いに焦点を当てる
+3. **説明的なテスト名** - テスト内容を説明する
+4. **準備・実行・検証** - 明確なテスト構造
+5. **外部依存関係をモックする** - 単体テストを分離する
+6. **エッジケースをテストする** - Null, undefined, empty, large
+7. **エラーパスをテストする** - ハッピーパスだけでなく
+8. **テストを高速に保つ** - 単体テストはそれぞれ < 50ms
+9. **テスト後にクリーンアップする** - 副作用なし
+10. **カバレッジレポートを確認する** - ギャップを特定する
 
-## Success Metrics
+## 成功の指標
 
-- 80%+ code coverage achieved
-- All tests passing (green)
-- No skipped or disabled tests
-- Fast test execution (< 30s for unit tests)
-- E2E tests cover critical user flows
-- Tests catch bugs before production
+- 80%以上のコードカバレッジ達成
+- すべてのテストが成功（グリーン）
+- スキップまたは無効化されたテストがない
+- 高速なテスト実行（単体テスト < 30秒）
+- E2Eテストが重要なユーザーフローをカバー
+- テストが本番前にバグをキャッチ
 
 ---
 
-**Remember**: Tests are not optional. They are the safety net that enables confident refactoring, rapid development, and production reliability.
+**忘れないで**: テストは任意ではありません。それらは、自信を持ったリファクタリング、迅速な開発、そして本番環境の信頼性を可能にするセーフティネットです。

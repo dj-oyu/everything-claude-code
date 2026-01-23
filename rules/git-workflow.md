@@ -1,6 +1,6 @@
-# Git Workflow
+# Gitワークフロー
 
-## Commit Message Format
+## コミットメッセージのフォーマット
 
 ```
 <type>: <description>
@@ -8,38 +8,38 @@
 <optional body>
 ```
 
-Types: feat, fix, refactor, docs, test, chore, perf, ci
+タイプ: feat, fix, refactor, docs, test, chore, perf, ci
 
-Note: Attribution disabled globally via ~/.claude/settings.json.
+注: 帰属表示は `~/.claude/settings.json` によりグローバルに無効化されています。
 
-## Pull Request Workflow
+## プルリクエストワークフロー
 
-When creating PRs:
-1. Analyze full commit history (not just latest commit)
-2. Use `git diff [base-branch]...HEAD` to see all changes
-3. Draft comprehensive PR summary
-4. Include test plan with TODOs
-5. Push with `-u` flag if new branch
+PRを作成する時:
+1. 完全なコミット履歴を分析する（最新のコミットだけでなく）
+2. `git diff [base-branch]...HEAD` を使用してすべての変更を確認する
+3. 包括的なPRの要約を作成する
+4. TODO付きのテスト計画を含める
+5. 新しいブランチの場合は `-u` フラグを付けてプッシュする
 
-## Feature Implementation Workflow
+## 機能実装ワークフロー
 
-1. **Plan First**
-   - Use **planner** agent to create implementation plan
-   - Identify dependencies and risks
-   - Break down into phases
+1. **最初に計画する**
+   - **planner** エージェントを使用して実装計画を作成する
+   - 依存関係とリスクを特定する
+   - フェーズに分解する
 
-2. **TDD Approach**
-   - Use **tdd-guide** agent
-   - Write tests first (RED)
-   - Implement to pass tests (GREEN)
-   - Refactor (IMPROVE)
-   - Verify 80%+ coverage
+2. **TDDアプローチ**
+   - **tdd-guide** エージェントを使用する
+   - 最初にテストを書く（レッド）
+   - テストをパスするように実装する（グリーン）
+   - リファクタリングする（改善）
+   - 80%以上のカバレッジを確認する
 
-3. **Code Review**
-   - Use **code-reviewer** agent immediately after writing code
-   - Address CRITICAL and HIGH issues
-   - Fix MEDIUM issues when possible
+3. **コードレビュー**
+   - コードを書いた直後に **code-reviewer** エージェントを使用する
+   - クリティカルおよび高優先度の問題に対処する
+   - 可能な場合は中優先度の問題を修正する
 
-4. **Commit & Push**
-   - Detailed commit messages
-   - Follow conventional commits format
+4. **コミット & プッシュ**
+   - 詳細なコミットメッセージ
+   - Conventional Commitsフォーマットに従う
